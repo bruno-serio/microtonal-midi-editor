@@ -2,13 +2,15 @@
 ![](https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue)
 ![Static Badge](https://img.shields.io/badge/License-GPL_v2-blue?style=for-the-badge)
 
+# microtonal-midi-editor
+
 A tool I'm building for myself, to create microtonal midi files by drawing images and analyzing them.
 
-### AUTHOR:
+### author:
 Bruno Serio
 
-### LICENSE:
+### license:
 GNU GENERAL PUBLIC LICENSE Version 2
 
-### REQUIREMENTS:
+### requirements:
         
