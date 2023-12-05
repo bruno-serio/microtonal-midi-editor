@@ -1,0 +1,87 @@
+#include <stdio.h>
+#include <stdlib.h>
+/*
+ *  ./flipImage <file_name>.ppm
+ */
+
+void copyPixel(FILE *origFile, FILE *newFile) {
+	unsigned char color;
+	for (int i=0; i<3; ++i) {
+		color = fgetc(origFile);
+		fputc(color, newFile);
+	}
+	return;
+}
+
+int main(int argc, char *argv[]) {
+
+	// open original file and read dimensions.
+	FILE *origFile = fopen(argv[1], "r");
+	unsigned char output;
+	int widthO, heightO, position = 2;
+
+	if (origFile == NULL) {
+		printf("Error opening file.\n");
+		return 1;
+	}
+
+
+	fseek(origFile, 3, SEEK_SET);
+
+	widthO = fgetc(origFile) - 0x30;	
+	output = fgetc(origFile);
+	while (output != 0x20) {
+		++position;
+		widthO *= 10;
+		widthO += (output - 0x30);
+		output = fgetc(origFile);
+	}
+
+	heightO = fgetc(origFile) - 0x30;	
+	output = fgetc(origFile);
+	while (output != 0x0a) {
+		++position;
+		heightO *= 10;
+		heightO += (output - 0x30);
+		output = fgetc(origFile);
+	}
+
+	// create new file with SWAPPED dimensions.
+	FILE *newFile = fopen("output.ppm", "wb");
+	fprintf(newFile, "P6\n%d %d\n255\n", heightO, widthO);
+	
+	// set cursor to image body.
+	fseek(origFile, 3, SEEK_CUR);
+
+	// move cursor to the last row, first column.
+	fseek(origFile, 3*widthO*(heightO-1), SEEK_CUR);;
+
+	for (int j=0; j<widthO; ++j) {
+		fseek(origFile, 3*widthO*(heightO-1)+3*j, SEEK_SET);
+		for (int i=0; i<heightO; ++i) {
+			if (i>0) {
+				fseek(origFile, -(widthO+1)*3, SEEK_CUR);
+			}
+			copyPixel(origFile, newFile);		
+		}
+	}
+
+	printf("Image flipped correctly.\n");
+	
+	int convertStatusExitCode;
+
+	fclose(origFile);
+	fclose(newFile);
+	
+	convertStatusExitCode = system("convert output.ppm output.png");
+	
+	switch (convertStatusExitCode) {
+		case -1: printf("Error converting image. Check if you have Magick Converter installed.\n");
+			 break;
+		case 0: printf("Image converted correctly.\n");
+			break;
+		default: printf("Error executing convert command.\nError code %d\n", convertStatusExitCode);
+	}
+
+	return 0;
+}
