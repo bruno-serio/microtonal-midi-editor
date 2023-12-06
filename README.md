@@ -13,6 +13,6 @@ Bruno Serio
 GNU GENERAL PUBLIC LICENSE Version 2
 
 ### dependencies:
->  Image Magick
+>  **Image Magick**
 >
 >       sudo apt install imagemagick        
