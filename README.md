@@ -6,11 +6,11 @@
 
 A tool I'm building for myself, to create microtonal midi files by drawing images and analyzing them.
 
-### author:
+## author:
 Bruno Serio
 
-### license:
+## license:
 GNU GENERAL PUBLIC LICENSE Version 2
 
-### requirements:
+### dependencies:
         
