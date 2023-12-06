@@ -8,6 +8,4 @@
     > INFO:
     > 1. equal-temperament / not-equal-temperament.
     > 2. scale info (step size).
-    > 3. list of notes/silence, separated by new-line characters. 
-    >
-    >        (silences are empty lines, each line represents the minimum time interval)
+    > 3. list of notes/silence, separated by new-line characters. (silences are empty lines, each line represents the minimum time interval)
