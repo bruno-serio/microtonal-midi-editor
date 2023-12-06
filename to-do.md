@@ -10,4 +10,4 @@
     > 2. scale info (step size).
     > 3. list of notes/silence, separated by new-line characters. 
     >
-    >       (silences are empty lines, each line represents the minimum time interval)
+    >        (silences are empty lines, each line represents the minimum time interval)
