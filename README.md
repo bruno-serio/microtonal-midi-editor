@@ -16,3 +16,11 @@ GNU GENERAL PUBLIC LICENSE Version 2
 >  **Image Magick**
 >
 >       sudo apt install imagemagick        
+>
+>  **Python 3**
+>
+>       sudo apt install python3
+>
+>  **MIDI Objects for Python
+>
+>       python3 -m pip install mido
