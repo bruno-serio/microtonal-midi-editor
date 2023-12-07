@@ -9,3 +9,5 @@
     > 1. equal-temperament / not-equal-temperament.
     > 2. scale info (step size).
     > 3. list of notes/silence, separated by new-line characters. (silences are empty lines, each line represents the minimum time interval)
+- image normalizer. ![](https://img.shields.io/badge/C-00599C?style=flat-square&logo=c&logoColor=white)
+    -> normalizes every color to R, Y, G, C, B.
