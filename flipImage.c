@@ -18,7 +18,6 @@ int main(int argc, char *argv[]) {
 		return 1;
 	}
 
-
 	fseek(origFile, 3, SEEK_SET);
 	widthO = getDimension(origFile, &position, 0x20);
 	heightO = getDimension(origFile, &position, 0x0a);
