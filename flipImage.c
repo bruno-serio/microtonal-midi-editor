@@ -20,24 +20,8 @@ int main(int argc, char *argv[]) {
 
 
 	fseek(origFile, 3, SEEK_SET);
-
-	widthO = fgetc(origFile) - 0x30;	
-	output = fgetc(origFile);
-	while (output != 0x20) {
-		++position;
-		widthO *= 10;
-		widthO += (output - 0x30);
-		output = fgetc(origFile);
-	}
-
-	heightO = fgetc(origFile) - 0x30;	
-	output = fgetc(origFile);
-	while (output != 0x0a) {
-		++position;
-		heightO *= 10;
-		heightO += (output - 0x30);
-		output = fgetc(origFile);
-	}
+	widthO = getDimension(origFile, &position, 0x20);
+	heightO = getDimension(origFile, &position, 0x0a);
 
 	// create new file with SWAPPED dimensions.
 	FILE *newFile = fopen("output.ppm", "wb");
