@@ -34,3 +34,18 @@ void copyPixel(FILE *origFile, FILE *newFile) {
 	}
 	return;
 }
+
+int getDimension(FILE *filename, int *position, unsigned char exitCondition) {
+	int dimension, output;
+	dimension = fgetc(filename) - 0x30;	
+	output = fgetc(filename);
+	while (output != exitCondition) {
+		++*position;
+		dimension *= 10;
+		dimension += (output - 0x30);
+		output = fgetc(filename);
+	}
+	return dimension;
+}
+
+
