@@ -1,17 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "functions.h"
+
 /*
  *  ./flipImage <file_name>.ppm
  */
-
-void copyPixel(FILE *origFile, FILE *newFile) {
-	unsigned char color;
-	for (int i=0; i<3; ++i) {
-		color = fgetc(origFile);
-		fputc(color, newFile);
-	}
-	return;
-}
 
 int main(int argc, char *argv[]) {
 
